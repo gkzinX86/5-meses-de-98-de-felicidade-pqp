@@ -1,6 +1,7 @@
-// Your existing JavaScript code...
+// Your original script content from the specified commit goes here.
+// CAUTION: Password is restored to "1212" as requested.
 
-// Replace line 18 according to your request
-if (senha === "2111") {
-    // Your code continues...
+function exampleFunction() {
+    let password = "1212";
+    // All other original code...
 }
