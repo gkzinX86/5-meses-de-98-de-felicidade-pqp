@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Você virou meu sol 🌻</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TELA INTRO -->
+<div id="intro">
+  <div class="intro-inner">
+    <span class="eyebrow">para você minha pequena</span>
+    <h1 id="typewriter"></h1>
+    <div class="form-wrap">
+      <input type="password" id="senha" placeholder="••••" maxlength="8" autocomplete="off">
+      <button type="button" onclick="verificarSenha()">entrar</button>
+    </div>
+    <p class="hint">uma surpresa te espera, feita por quem? you love!</p>
+  </div>
+</div>
+
+<!-- TELA PRINCIPAL -->
+<div id="main" class="hidden">
+  <audio id="musica" src="astronauta.mp3" loop></audio>
+
+  <button id="musicBtn" onclick="toggleMusica()" title="música">
+    <span id="musicIcon">♪</span>
+  </button>
+
+  <div class="main-inner">
+    <p class="subtitle">toque cada pétala em ordem</p>
+    <div class="sunflower" id="sunflower">
+      <div class="center-dot"></div>
+    </div>
+    <p class="progress-label" id="progressLabel">0 / 8</p>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal-overlay">
+  <div class="modal-card">
+    <img id="modal-img" src="" alt="">
+    <p id="modal-text"></p>
+    <button class="close-btn" onclick="fecharModal()">fechar</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

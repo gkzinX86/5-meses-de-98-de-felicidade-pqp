@@ -1,0 +1,307 @@
+/* ── Reset & Base ───────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d0b09;
+  --surface: #161310;
+  --gold: #d4a84b;
+  --gold-soft: #e8c97a;
+  --brown: #3b2106;
+  --text: #f0e8d8;
+  --muted: #7a6a55;
+  --radius: 14px;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+}
+
+/* ── INTRO ──────────────────────────────────────── */
+#intro {
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, #1e1408 0%, var(--bg) 100%);
+}
+
+.intro-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  max-width: 340px;
+  width: 100%;
+}
+
+.eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+#typewriter {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(22px, 6vw, 30px);
+  line-height: 1.4;
+  color: var(--text);
+  min-height: 80px;
+}
+
+.form-wrap {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+input[type="password"] {
+  flex: 1;
+  padding: 14px 18px;
+  background: #1c1610;
+  border: 1px solid #2e2217;
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px; /* evita zoom no iOS */
+  letter-spacing: 0.3em;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="password"]:focus {
+  border-color: var(--gold);
+}
+
+input::placeholder { color: var(--muted); letter-spacing: 0.1em; }
+
+button {
+  padding: 14px 22px;
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.15s;
+  white-space: nowrap;
+}
+
+button:active { transform: scale(0.96); }
+
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* ── MAIN ───────────────────────────────────────── */
+#main {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse 90% 70% at 50% 50%, #1a1105 0%, var(--bg) 100%);
+}
+
+.main-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.subtitle {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── SUNFLOWER ──────────────────────────────────── */
+.sunflower {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  animation: bloom 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes bloom {
+  from { transform: scale(0) rotate(-180deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);   opacity: 1; }
+}
+
+.center-dot {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 35% 35%, #5c3610, var(--brown));
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  box-shadow: 0 0 30px rgba(60, 30, 5, 0.8);
+}
+
+.petal {
+  width: 48px;
+  height: 100px;
+  background: linear-gradient(180deg, #c49a35, #9b7420);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -24px;
+  border-radius: 50% 50% 45% 45%;
+  transform-origin: center 110px;
+  cursor: pointer;
+  opacity: 0.2;
+  transition: opacity 0.4s, filter 0.3s, transform 0.3s;
+  filter: saturate(0.4);
+}
+
+.petal.active {
+  opacity: 0.75;
+  filter: saturate(0.9);
+}
+
+.petal.done {
+  opacity: 1;
+  filter: saturate(1.2);
+  background: linear-gradient(180deg, var(--gold-soft), var(--gold));
+}
+
+.petal.active:hover {
+  filter: saturate(1.4) brightness(1.15);
+  box-shadow: 0 0 18px rgba(212, 168, 75, 0.4);
+}
+
+.progress-label {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.2em;
+}
+
+/* ── MUSIC BTN ──────────────────────────────────── */
+#musicBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  background: rgba(212, 168, 75, 0.12);
+  border: 1px solid rgba(212, 168, 75, 0.25);
+  color: var(--gold);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#musicBtn:active { transform: scale(0.9); }
+
+/* ── MODAL ──────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 20px;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-card {
+  background: var(--surface);
+  border: 1px solid #2a2018;
+  border-radius: 20px 20px 16px 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transform: translateY(30px);
+  transition: transform 0.3s;
+}
+
+.modal-overlay.show .modal-card {
+  transform: translateY(0);
+}
+
+#modal-img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  max-height: 220px;
+  display: none;
+}
+
+#modal-img.visible { display: block; }
+
+#modal-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.close-btn {
+  background: transparent;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  padding: 10px 24px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  align-self: center;
+  border-radius: 50px;
+}
+
+.close-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── UTILS ──────────────────────────────────────── */
+.hidden { display: none !important; }
+
+/* Shake animation for wrong password */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+.shake { animation: shake 0.4s ease; }
